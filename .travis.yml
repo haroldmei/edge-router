@@ -5,7 +5,7 @@ services:
 install: true
 
 env:
-  - GROUP=weaveworksdemos COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG REPO=edge-router;
+  - GROUP=haroldmei COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG REPO=edge-router;
 
 script:
   - set -e
@@ -17,7 +17,7 @@ after_success:
       echo "This is a build triggered by an external PR. Skipping docker push.";
       exit 0;
     fi;
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS;
+  - docker -u $DOCKER_USER -p $DOCKER_PASS;
   - ./push.sh
 notifications:
   slack:
